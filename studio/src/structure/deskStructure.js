@@ -8,7 +8,7 @@ import {
 import IframePreview from '../previews/IframePreview'
 
 // Web preview configuration
-const remoteURL = 'https://blog-web-rkciiimp.netlify.com'
+const remoteURL = 'https://jlabs.netlify.app'
 const localURL = 'http://localhost:8000'
 const previewURL =
   window.location.hostname === 'localhost' ? localURL : remoteURL
@@ -63,6 +63,10 @@ export default () =>
         .schemaType('post')
         .child(S.documentTypeList('post').title('Blog posts')),
       S.listItem()
+        .title('Projects')
+        .schemaType('project')
+        .child(S.documentTypeList('project').title('Projects')),
+      S.listItem()
         .title('Authors')
         .icon(MdPerson)
         .schemaType('author')
@@ -77,7 +81,7 @@ export default () =>
       // defined the structure above.
       ...S.documentTypeListItems().filter(
         listItem =>
-          !['category', 'author', 'post', 'siteSettings'].includes(
+          !['category', 'author', 'post', 'siteSettings', 'project'].includes(
             listItem.getId()
           )
       )

@@ -14,13 +14,13 @@ export default {
                 {
                   buildHookId: '5e8899f4aaaf82c983eb3e57',
                   title: 'Sanity Studio',
-                  name: 'blog-studio-26uqm76x',
+                  name: 'jlabs-studio',
                   apiId: '8670b55c-b4c5-4478-9a4a-ca3bca303c35'
                 },
                 {
                   buildHookId: '5e8899f4aaaf828e5beb3fcd',
                   title: 'Blog Website',
-                  name: 'blog-web-rkciiimp',
+                  name: 'jlabs',
                   apiId: '9ebc4796-7fc5-41e7-8662-a67ce377197f'
                 }
               ]
@@ -33,7 +33,7 @@ export default {
             value: 'https://github.com/jlabs/blog',
             category: 'Code'
           },
-          { title: 'Frontend', value: 'https://blog-web-rkciiimp.netlify.com', category: 'apps' }
+          { title: 'Frontend', value: 'https://jlabs.netlify.app', category: 'apps' }
         ]
       }
     },

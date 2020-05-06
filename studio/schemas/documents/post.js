@@ -33,6 +33,11 @@ export default {
       title: 'Main image'
     },
     {
+      name: 'sourceURL',
+      type: 'url',
+      title: 'Source URL'
+    },
+    {
       name: 'excerpt',
       type: 'excerptPortableText',
       title: 'Excerpt',
