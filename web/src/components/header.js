@@ -9,7 +9,7 @@ const Header = ({onHideNav, onShowNav, showNav, siteTitle}) => (
   <div className={styles.root}>
     <div className={styles.wrapper}>
       <div className={styles.branding}>
-        <Link to='/'>{siteTitle}</Link>
+        <Link to='/' >{siteTitle}</Link>
       </div>
 
       <button className={styles.toggleNavButton} onClick={showNav ? onHideNav : onShowNav}>
@@ -19,10 +19,10 @@ const Header = ({onHideNav, onShowNav, showNav, siteTitle}) => (
       <nav className={cn(styles.nav, showNav && styles.showNav)}>
         <ul>
           <li>
-            <Link to='/projects/'>Projects</Link>
+            <Link to='/blog/' activeStyle={{ color: "purple" }}>Blog</Link>
           </li>
           <li>
-            <Link to='/archive/'>Blog Archive</Link>
+            <Link to='/projects/' activeStyle={{ color: "purple" }}>Projects</Link>
           </li>
         </ul>
       </nav>

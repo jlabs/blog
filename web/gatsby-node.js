@@ -37,6 +37,7 @@ async function createBlogPostPages (graphql, actions) {
       const {id, slug = {}, publishedAt} = edge.node
       const dateSegment = format(publishedAt, 'YYYY/MM')
       const path = `/blog/${dateSegment}/${slug.current}/`
+      console.log(path)
 
       createPage({
         path,
@@ -47,5 +48,49 @@ async function createBlogPostPages (graphql, actions) {
 }
 
 exports.createPages = async ({graphql, actions}) => {
+  // await createBlogPostPages(graphql, actions)
+}
+
+async function createProjectPages (graphql, actions) {
+  const {createPage} = actions
+  const result = await graphql(`
+    {
+      allSanityProject(
+        filter: { slug: { current: { ne: null } } }
+      ) {
+        edges {
+          node {
+            id
+            _createdAt
+            slug {
+              current
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  if (result.errors) throw result.errors
+
+  const projectEdges = (result.data.allSanityProject || {}).edges || []
+
+  projectEdges
+    .filter(edge => !isFuture(edge.node._createdAt))
+    .forEach((edge, index) => {
+      const {id, slug = {}, _createdAt} = edge.node
+      const dateSegment = format(_createdAt, 'YYYY/MM')
+      const path = `/project/${dateSegment}/${slug.current}/`
+
+      createPage({
+        path,
+        component: require.resolve('./src/templates/project.js'),
+        context: {id}
+      })
+    })
+}
+
+exports.createPages = async ({graphql, actions}) => {
   await createBlogPostPages(graphql, actions)
+  await createProjectPages(graphql, actions)
 }

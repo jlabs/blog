@@ -67,6 +67,10 @@ export default () =>
         .schemaType('project')
         .child(S.documentTypeList('project').title('Projects')),
       S.listItem()
+        .title('Ideas')
+        .schemaType('idea')
+        .child(S.documentTypeList('idea').title('Ideas')),
+      S.listItem()
         .title('Authors')
         .icon(MdPerson)
         .schemaType('author')
@@ -81,7 +85,7 @@ export default () =>
       // defined the structure above.
       ...S.documentTypeListItems().filter(
         listItem =>
-          !['category', 'author', 'post', 'siteSettings', 'project'].includes(
+          !['category', 'author', 'post', 'siteSettings', 'project', 'idea'].includes(
             listItem.getId()
           )
       )
